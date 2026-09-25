@@ -1,0 +1,44 @@
+[
+	{
+		"id": "corte-clasico",
+		"name": "Corte Clásico",
+		"description": "Un corte tradicional, limpio y a la medida de tu estilo.",
+		"duration": "30 min",
+		"price": "$XXX"
+	},
+	{
+		"id": "fade",
+		"name": "Fade",
+		"description": "Degradado preciso, moderno y con acabado impecable.",
+		"duration": "40 min",
+		"price": "$XXX"
+	},
+	{
+		"id": "corte-barba",
+		"name": "Corte + Barba",
+		"description": "La combinación completa para un estilo renovado.",
+		"duration": "50 min",
+		"price": "$XXX"
+	},
+	{
+		"id": "arreglo-barba",
+		"name": "Arreglo de Barba",
+		"description": "Perfilado y cuidado profesional de tu barba.",
+		"duration": "20 min",
+		"price": "$XXX"
+	},
+	{
+		"id": "afeitado-tradicional",
+		"name": "Afeitado Tradicional",
+		"description": "Ritual clásico con navaja, toalla caliente y precisión.",
+		"duration": "35 min",
+		"price": "$XXX"
+	},
+	{
+		"id": "corte-infantil",
+		"name": "Corte Infantil",
+		"description": "Cortes cómodos y divertidos para los más pequeños.",
+		"duration": "25 min",
+		"price": "$XXX"
+	}
+]

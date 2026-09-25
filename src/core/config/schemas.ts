@@ -46,3 +46,13 @@ export const featuresSchema = z.object({
 		active: z.boolean(),
 	}),
 });
+
+export const serviceSchema = z.object({
+	id: z.string(),
+	name: z.string(),
+	description: z.string(),
+	duration: z.string(),
+	price: z.string(),
+});
+
+export const servicesSchema = z.array(serviceSchema);

@@ -3,9 +3,11 @@ import Base from '../core/layouts/Base.astro';
 import { seo } from '../core/config';
 import Navbar from '../verticals/barbershop/sections/Navbar.astro';
 import Hero from '../verticals/barbershop/sections/Hero.astro';
+import Services from '../verticals/barbershop/sections/Services.astro';
 ---
 
 <Base title={seo.title} description={seo.description}>
 	<Navbar />
 	<Hero />
+	<Services />
 </Base>

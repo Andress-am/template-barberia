@@ -1,0 +1,50 @@
+---
+import Container from '../../../core/ui/Container.astro';
+import SectionHeading from '../../../core/ui/SectionHeading.astro';
+import ServiceCard from '../cards/ServiceCard.astro';
+import { services } from '../../../core/config';
+---
+
+<section class="services" id="services">
+	<Container>
+		<SectionHeading
+			title="Nuestros Servicios"
+			subtitle="Todo lo que necesitas para mantener tu estilo."
+		/>
+
+		<div class="grid">
+			{services.map((service) => (
+				<ServiceCard
+					name={service.name}
+					description={service.description}
+					duration={service.duration}
+					price={service.price}
+				/>
+			))}
+		</div>
+	</Container>
+</section>
+
+<style>
+	.services {
+		padding-block: var(--section-spacing);
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	@media (min-width: 640px) {
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+</style>

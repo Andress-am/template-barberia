@@ -1,0 +1,70 @@
+---
+import Button from '../../../core/ui/Button.astro';
+
+interface Props {
+	name: string;
+	description: string;
+	duration: string;
+	price: string;
+}
+
+const { name, description, duration, price } = Astro.props;
+---
+
+<article class="card hover-lift">
+	<div class="card-body">
+		<h3>{name}</h3>
+		<p class="description">{description}</p>
+		<div class="meta">
+			<span class="duration">{duration}</span>
+			<span class="price">{price}</span>
+		</div>
+		<Button variant="ghost" href="#booking">Reservar →</Button>
+	</div>
+</article>
+
+<style>
+	.card {
+		background-color: var(--dark-gray);
+		border-radius: var(--border-radius);
+		border: 1px solid var(--light-gray);
+		overflow: hidden;
+	}
+
+	.card-body {
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	h3 {
+		font-size: 1.4rem;
+	}
+
+	.description {
+		color: var(--light-gray);
+		font-size: 0.95rem;
+		line-height: 1.5;
+	}
+
+	.meta {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0.5rem 0;
+		padding-top: 0.75rem;
+		border-top: 1px solid var(--light-gray);
+	}
+
+	.duration {
+		font-size: 0.85rem;
+		color: var(--light-gray);
+	}
+
+	.price {
+		font-family: var(--font-heading);
+		font-size: 1.3rem;
+		color: var(--gold);
+	}
+</style>
