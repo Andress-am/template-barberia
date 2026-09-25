@@ -56,3 +56,11 @@ export const serviceSchema = z.object({
 });
 
 export const servicesSchema = z.array(serviceSchema);
+
+export const galleryItemSchema = z.object({
+	id: z.string(),
+	category: z.enum(['cortes', 'fade', 'barbas', 'disenos']),
+	alt: z.string(),
+});
+
+export const gallerySchema = z.array(galleryItemSchema);

@@ -19,3 +19,8 @@ import servicesData from '../../site/content/services.json';
 import { servicesSchema } from './schemas';
 
 export const services = servicesSchema.parse(servicesData);
+
+import galleryData from '../../site/content/gallery.json';
+import { gallerySchema } from './schemas';
+
+export const gallery = gallerySchema.parse(galleryData);

@@ -1,0 +1,11 @@
+[
+	{ "id": "g1", "category": "cortes", "alt": "Corte de cabello moderno" },
+	{ "id": "g2", "category": "fade", "alt": "Fade degradado preciso" },
+	{ "id": "g3", "category": "barbas", "alt": "Arreglo de barba profesional" },
+	{ "id": "g4", "category": "disenos", "alt": "Diseño de corte personalizado" },
+	{ "id": "g5", "category": "cortes", "alt": "Corte clásico masculino" },
+	{ "id": "g6", "category": "fade", "alt": "Fade bajo con textura" },
+	{ "id": "g7", "category": "barbas", "alt": "Afeitado tradicional con navaja" },
+	{ "id": "g8", "category": "disenos", "alt": "Diseño con línea decorativa" },
+	{ "id": "g9", "category": "cortes", "alt": "Corte texturizado" }
+]
