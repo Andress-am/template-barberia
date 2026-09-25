@@ -1,0 +1,105 @@
+---
+import Container from '../../../core/ui/Container.astro';
+
+const stats = [
+	{ value: '+5', label: 'Años de experiencia' },
+	{ value: '+1,000', label: 'Clientes' },
+	{ value: '+10,000', label: 'Cortes' },
+];
+---
+
+<section class="about" id="about">
+	<Container>
+		<div class="grid">
+			<div class="image-placeholder">
+				<span>Foto de la barbería</span>
+			</div>
+
+			<div class="content">
+				<h2>Más que un corte. Una experiencia.</h2>
+				<p>
+					Creemos que una buena barbería no se trata únicamente de cortar el
+					cabello. Se trata de crear una experiencia, cuidar cada detalle y
+					conseguir que cada cliente salga sintiéndose mejor que cuando llegó.
+				</p>
+
+				<div class="stats">
+					{stats.map((stat) => (
+						<div class="stat">
+							<span class="value">{stat.value}</span>
+							<span class="label">{stat.label}</span>
+						</div>
+					))}
+				</div>
+			</div>
+		</div>
+	</Container>
+</section>
+
+<style>
+	.about {
+		padding-block: var(--section-spacing);
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2.5rem;
+		align-items: center;
+	}
+
+	@media (min-width: 768px) {
+		.grid {
+			grid-template-columns: 1fr 1fr;
+			gap: 4rem;
+		}
+	}
+
+	.image-placeholder {
+		aspect-ratio: 4 / 5;
+		background-color: var(--dark-gray);
+		border: 1px solid var(--light-gray);
+		border-radius: var(--border-radius);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--light-gray);
+		font-family: var(--font-heading);
+	}
+
+	.content h2 {
+		font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+		margin-bottom: 1.25rem;
+	}
+
+	.content p {
+		color: var(--light-gray);
+		line-height: 1.7;
+		margin-bottom: 2.5rem;
+	}
+
+	.stats {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+	}
+
+	.stat {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.value {
+		font-family: var(--font-heading);
+		font-size: clamp(1.5rem, 3vw, 2rem);
+		color: var(--gold);
+	}
+
+	.label {
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		letter-spacing: 0.03em;
+		color: var(--light-gray);
+	}
+</style>
