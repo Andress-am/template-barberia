@@ -1,0 +1,77 @@
+---
+import Button from '../../../core/ui/Button.astro';
+---
+
+<section class="hero" id="hero">
+	<div class="overlay"></div>
+
+	<div class="content">
+		<span class="badge">Barbería Premium</span>
+		<h1>Tu estilo. Tu barbería.</h1>
+		<p>Cortes precisos, estilo personalizado y una experiencia diseñada para ti.</p>
+
+		<div class="actions">
+			<Button variant="primary" href="#booking">Agendar cita</Button>
+			<Button variant="secondary" href="#services">Ver servicios</Button>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		position: relative;
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		background: radial-gradient(circle at center, var(--dark-gray) 0%, var(--black) 70%);
+		overflow: hidden;
+	}
+
+	.overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+	}
+
+	.content {
+		position: relative;
+		z-index: 1;
+		max-width: 700px;
+		padding: 0 1.5rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.25rem;
+	}
+
+	.badge {
+		font-size: 0.8rem;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: var(--gold);
+		border: 1px solid var(--gold);
+		padding: 0.4rem 1rem;
+		border-radius: var(--border-radius);
+	}
+
+	h1 {
+		font-size: clamp(2.5rem, 6vw, 4.5rem);
+		line-height: 1.1;
+	}
+
+	p {
+		font-size: clamp(1rem, 2vw, 1.25rem);
+		color: var(--light-gray);
+		max-width: 500px;
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		justify-content: center;
+		margin-top: 0.5rem;
+	}
+</style>

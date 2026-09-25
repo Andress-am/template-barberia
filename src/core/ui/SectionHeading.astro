@@ -1,0 +1,39 @@
+---
+interface Props {
+	title: string;
+	subtitle?: string;
+	align?: 'left' | 'center';
+}
+
+const { title, subtitle, align = 'center' } = Astro.props;
+---
+
+<div class:list={['heading', `align-${align}`]}>
+	<h2>{title}</h2>
+	{subtitle && <p>{subtitle}</p>}
+</div>
+
+<style>
+	.heading {
+		margin-bottom: 3rem;
+	}
+
+	.align-center {
+		text-align: center;
+	}
+
+	.align-left {
+		text-align: left;
+	}
+
+	h2 {
+		font-size: clamp(2rem, 4vw, 3rem);
+		letter-spacing: 0.02em;
+	}
+
+	p {
+		margin-top: 0.75rem;
+		color: var(--light-gray);
+		font-size: 1.1rem;
+	}
+</style>

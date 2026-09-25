@@ -1,0 +1,158 @@
+---
+import Button from '../../../core/ui/Button.astro';
+import { business } from '../../../core/config';
+
+const links = [
+	{ label: 'Inicio', href: '#hero' },
+	{ label: 'Servicios', href: '#services' },
+	{ label: 'Galería', href: '#gallery' },
+	{ label: 'Nosotros', href: '#about' },
+	{ label: 'Barberos', href: '#team' },
+	{ label: 'Contacto', href: '#location' },
+];
+---
+
+<header class="navbar" id="navbar">
+	<div class="navbar-inner">
+		<a href="#hero" class="logo">{business.name}</a>
+
+		<nav class="links">
+			{links.map((link) => (
+				<a href={link.href}>{link.label}</a>
+			))}
+		</nav>
+
+		<div class="cta">
+			<Button variant="primary" href="#booking">Agendar cita</Button>
+		</div>
+
+		<button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+	</div>
+
+	<nav class="mobile-links" id="mobile-links">
+		{links.map((link) => (
+			<a href={link.href}>{link.label}</a>
+		))}
+		<Button variant="primary" href="#booking">Agendar cita</Button>
+	</nav>
+</header>
+
+<style>
+	.navbar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 50;
+		background-color: transparent;
+		transition: background-color 0.3s ease;
+	}
+
+	.navbar.scrolled {
+		background-color: var(--black);
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+	}
+
+	.navbar-inner {
+		max-width: var(--container-width);
+		margin-inline: auto;
+		padding: 1.25rem 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.logo {
+		font-family: var(--font-heading);
+		font-size: 1.4rem;
+		color: var(--white);
+	}
+
+	.links {
+		display: none;
+		gap: 2rem;
+	}
+
+	.links a {
+		font-size: 0.9rem;
+		text-transform: uppercase;
+		letter-spacing: 0.03em;
+		color: var(--white);
+		transition: color 0.3s ease;
+	}
+
+	.links a:hover {
+		color: var(--gold);
+	}
+
+	.cta {
+		display: none;
+	}
+
+	.menu-toggle {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+		padding: 0.5rem;
+	}
+
+	.menu-toggle span {
+		width: 24px;
+		height: 2px;
+		background-color: var(--white);
+	}
+
+	.mobile-links {
+		display: none;
+		flex-direction: column;
+		gap: 1.5rem;
+		padding: 2rem 1.5rem;
+		background-color: var(--black);
+	}
+
+	.mobile-links.open {
+		display: flex;
+	}
+
+	.mobile-links a {
+		color: var(--white);
+		text-transform: uppercase;
+		letter-spacing: 0.03em;
+	}
+
+	@media (min-width: 768px) {
+		.links {
+			display: flex;
+		}
+
+		.cta {
+			display: block;
+		}
+
+		.menu-toggle {
+			display: none;
+		}
+	}
+</style>
+
+<script>
+	const navbar = document.getElementById('navbar');
+	const menuToggle = document.getElementById('menu-toggle');
+	const mobileLinks = document.getElementById('mobile-links');
+
+	window.addEventListener('scroll', () => {
+		if (window.scrollY > 50) {
+			navbar?.classList.add('scrolled');
+		} else {
+			navbar?.classList.remove('scrolled');
+		}
+	});
+
+	menuToggle?.addEventListener('click', () => {
+		mobileLinks?.classList.toggle('open');
+	});
+</script>

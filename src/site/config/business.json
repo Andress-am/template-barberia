@@ -1,0 +1,18 @@
+{
+	"name": "Nombre de la Barbería",
+	"tagline": "Tu estilo. Tu barbería.",
+	"city": "Ciudad",
+	"phone": "+52 000 000 0000",
+	"whatsapp": "+52 000 000 0000",
+	"address": "Dirección de la barbería",
+	"googleMapsUrl": "https://maps.google.com",
+	"hours": {
+		"weekdays": "Lunes – Sábado: 9:00 AM – 8:00 PM",
+		"weekend": "Domingo: 10:00 AM – 4:00 PM"
+	},
+	"social": {
+		"instagram": "https://instagram.com",
+		"facebook": "https://facebook.com",
+		"tiktok": "https://tiktok.com"
+	}
+}

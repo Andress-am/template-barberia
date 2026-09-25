@@ -1,0 +1,18 @@
+{
+	"sections": [
+		"hero",
+		"services",
+		"gallery",
+		"about",
+		"team",
+		"booking",
+		"testimonials",
+		"promotion",
+		"location",
+		"faq",
+		"cta"
+	],
+	"promotion": {
+		"active": true
+	}
+}
