@@ -1,0 +1,67 @@
+---
+import Container from '../../../core/ui/Container.astro';
+import SectionHeading from '../../../core/ui/SectionHeading.astro';
+import { faq } from '../../../core/config';
+---
+
+<section class="faq" id="faq">
+	<Container>
+		<SectionHeading title="Preguntas Frecuentes" />
+
+		<div class="accordion">
+			{faq.map((item) => (
+				<details class="item">
+					<summary>{item.question}</summary>
+					<p>{item.answer}</p>
+				</details>
+			))}
+		</div>
+	</Container>
+</section>
+
+<style>
+	.faq {
+		padding-block: var(--section-spacing);
+	}
+
+	.accordion {
+		max-width: 700px;
+		margin-inline: auto;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.item {
+		background-color: var(--dark-gray);
+		border: 1px solid var(--light-gray);
+		border-radius: var(--border-radius);
+		padding: 1.25rem 1.5rem;
+	}
+
+	summary {
+		cursor: pointer;
+		font-weight: 600;
+		list-style: none;
+	}
+
+	summary::-webkit-details-marker {
+		display: none;
+	}
+
+	summary::after {
+		content: '+';
+		float: right;
+		color: var(--gold);
+	}
+
+	.item[open] summary::after {
+		content: '–';
+	}
+
+	.item p {
+		margin-top: 1rem;
+		color: var(--light-gray);
+		line-height: 1.5;
+	}
+</style>

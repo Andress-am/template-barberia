@@ -1,0 +1,8 @@
+[
+	{ "id": "f1", "question": "¿Necesito reservar una cita?", "answer": "Sí, recomendamos reservar con anticipación para asegurar tu horario y barbero preferido." },
+	{ "id": "f2", "question": "¿Cuánto dura un corte?", "answer": "Depende del servicio; en promedio entre 25 y 50 minutos." },
+	{ "id": "f3", "question": "¿Puedo elegir a mi barbero?", "answer": "Sí, durante la reservación puedes elegir un barbero específico o dejar que te asignemos el primero disponible." },
+	{ "id": "f4", "question": "¿Qué métodos de pago aceptan?", "answer": "Aceptamos efectivo y tarjeta." },
+	{ "id": "f5", "question": "¿Atienden niños?", "answer": "Sí, contamos con el servicio de Corte Infantil." },
+	{ "id": "f6", "question": "¿Qué pasa si llego tarde a mi cita?", "answer": "Contamos con una tolerancia de 10 minutos; después de ese tiempo podríamos reprogramar tu cita." }
+]

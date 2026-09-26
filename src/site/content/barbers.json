@@ -1,0 +1,23 @@
+[
+	{
+		"id": "carlos",
+		"name": "Carlos",
+		"specialty": "Especialista en Fade & Barbería clásica",
+		"experience": "5 años de experiencia",
+		"instagram": "https://instagram.com"
+	},
+	{
+		"id": "miguel",
+		"name": "Miguel",
+		"specialty": "Especialista en cortes clásicos y afeitado tradicional",
+		"experience": "7 años de experiencia",
+		"instagram": "https://instagram.com"
+	},
+	{
+		"id": "david",
+		"name": "David",
+		"specialty": "Especialista en diseños y estilos modernos",
+		"experience": "3 años de experiencia",
+		"instagram": "https://instagram.com"
+	}
+]

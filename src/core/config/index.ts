@@ -24,3 +24,17 @@ import galleryData from '../../site/content/gallery.json';
 import { gallerySchema } from './schemas';
 
 export const gallery = gallerySchema.parse(galleryData);
+
+import barbersData from '../../site/content/barbers.json';
+import { barbersSchema } from './schemas';
+
+export const barbers = barbersSchema.parse(barbersData);
+
+import testimonialsData from '../../site/content/testimonials.json';
+import faqData from '../../site/content/faq.json';
+import promotionData from '../../site/content/promotion.json';
+import { testimonialsSchema, faqSchema, promotionContentSchema } from './schemas';
+
+export const testimonials = testimonialsSchema.parse(testimonialsData);
+export const faq = faqSchema.parse(faqData);
+export const promotionContent = promotionContentSchema.parse(promotionData);

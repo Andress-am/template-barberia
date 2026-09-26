@@ -1,0 +1,82 @@
+---
+import Container from '../../../core/ui/Container.astro';
+import SectionHeading from '../../../core/ui/SectionHeading.astro';
+import Button from '../../../core/ui/Button.astro';
+import { business } from '../../../core/config';
+
+const whatsappLink = `https://wa.me/${business.whatsapp.replace(/[^0-9]/g, '')}`;
+---
+
+<section class="location" id="location">
+	<Container>
+		<SectionHeading title="Encuéntranos" />
+
+		<div class="grid">
+			<div class="info">
+				<p><strong>Dirección</strong><br />{business.address}</p>
+				<p><strong>Teléfono</strong><br />{business.phone}</p>
+				<p><strong>WhatsApp</strong><br />{business.whatsapp}</p>
+				<p><strong>Horario</strong><br />{business.hours.weekdays}<br />{business.hours.weekend}</p>
+
+				<div class="actions">
+					<Button variant="secondary" href={business.googleMapsUrl}>Abrir en Google Maps</Button>
+					<Button variant="primary" href={whatsappLink}>Contactar por WhatsApp</Button>
+				</div>
+			</div>
+
+			<div class="map-placeholder">
+				<span>Mapa (Google Maps)</span>
+			</div>
+		</div>
+	</Container>
+</section>
+
+<style>
+	.location {
+		padding-block: var(--section-spacing);
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+	}
+
+	@media (min-width: 768px) {
+		.grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	.info p {
+		margin-bottom: 1.25rem;
+		color: var(--light-gray);
+		line-height: 1.5;
+	}
+
+	.info strong {
+		color: var(--white);
+		text-transform: uppercase;
+		font-size: 0.8rem;
+		letter-spacing: 0.03em;
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		margin-top: 1.5rem;
+	}
+
+	.map-placeholder {
+		background-color: var(--dark-gray);
+		border: 1px solid var(--light-gray);
+		border-radius: var(--border-radius);
+		min-height: 300px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--light-gray);
+		font-family: var(--font-heading);
+	}
+</style>

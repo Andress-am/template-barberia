@@ -1,0 +1,394 @@
+---
+import Container from '../../../core/ui/Container.astro';
+import SectionHeading from '../../../core/ui/SectionHeading.astro';
+import Button from '../../../core/ui/Button.astro';
+import { services, barbers } from '../../../core/config';
+
+const timeSlots = ['9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM'];
+const stepLabels = ['Servicio', 'Barbero', 'Fecha', 'Horario', 'Tus datos', 'Confirmar'];
+---
+
+<section class="booking" id="booking">
+	<Container>
+		<SectionHeading title="Agenda tu Cita" />
+
+		<div class="progress">
+			{stepLabels.map((label, i) => (
+				<div class="progress-step" data-step-indicator={i + 1}>
+					<span class="dot">{i + 1}</span>
+					<span class="label">{label}</span>
+				</div>
+			))}
+		</div>
+
+		<div class="booking-box">
+			<!-- Paso 1: Servicio -->
+			<div class="step active" data-step="1">
+				<h3>Elige un servicio</h3>
+				<div class="options">
+					{services.map((s) => (
+						<button class="option" data-type="service" data-value={s.id} data-label={`${s.name} — ${s.price}`}>
+							{s.name} <span class="option-meta">{s.duration} · {s.price}</span>
+						</button>
+					))}
+				</div>
+			</div>
+
+			<!-- Paso 2: Barbero -->
+			<div class="step" data-step="2">
+				<h3>Elige un barbero</h3>
+				<div class="options">
+					<button class="option" data-type="barber" data-value="any" data-label="Cualquier barbero disponible">
+						Cualquier barbero disponible
+					</button>
+					{barbers.map((b) => (
+						<button class="option" data-type="barber" data-value={b.id} data-label={b.name}>
+							{b.name} <span class="option-meta">{b.specialty}</span>
+						</button>
+					))}
+				</div>
+			</div>
+
+			<!-- Paso 3: Fecha -->
+			<div class="step" data-step="3">
+				<h3>Elige una fecha</h3>
+				<input type="date" id="date-input" class="date-input" />
+			</div>
+
+			<!-- Paso 4: Horario -->
+			<div class="step" data-step="4">
+				<h3>Elige un horario</h3>
+				<div class="options options-time">
+					{timeSlots.map((t) => (
+						<button class="option" data-type="time" data-value={t} data-label={t}>{t}</button>
+					))}
+				</div>
+			</div>
+
+			<!-- Paso 5: Datos del cliente -->
+			<div class="step" data-step="5">
+				<h3>Tus datos</h3>
+				<div class="form">
+					<input type="text" id="input-name" placeholder="Nombre completo" />
+					<input type="tel" id="input-phone" placeholder="Teléfono" />
+					<input type="email" id="input-email" placeholder="Correo electrónico" />
+				</div>
+			</div>
+
+			<!-- Paso 6: Confirmación -->
+			<div class="step" data-step="6">
+				<h3>Confirma tu cita</h3>
+				<div class="summary" id="summary"></div>
+				<div id="confirmation" class="confirmation hidden">
+					<p class="confirmation-title">¡Cita confirmada!</p>
+					<p>Número de reserva: <span id="confirmation-number"></span></p>
+					<p class="confirmation-note">Este es un prototipo; ninguna cita real fue agendada.</p>
+				</div>
+			</div>
+
+			<div class="nav-buttons">
+				<button class="nav-btn" id="btn-back">Atrás</button>
+				<button class="nav-btn primary" id="btn-next">Siguiente</button>
+			</div>
+		</div>
+	</Container>
+</section>
+
+<style>
+	.booking {
+		padding-block: var(--section-spacing);
+	}
+
+	.progress {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1.5rem;
+		margin-bottom: 2.5rem;
+	}
+
+	.progress-step {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		opacity: 0.4;
+		transition: opacity 0.3s ease;
+	}
+
+	.progress-step.current {
+		opacity: 1;
+	}
+
+	.dot {
+		width: 26px;
+		height: 26px;
+		border-radius: 50%;
+		border: 1px solid var(--gold);
+		color: var(--gold);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 0.8rem;
+	}
+
+	.progress-step.current .dot {
+		background-color: var(--gold);
+		color: var(--black);
+	}
+
+	.label {
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		letter-spacing: 0.03em;
+	}
+
+	.booking-box {
+		max-width: 700px;
+		margin-inline: auto;
+		background-color: var(--dark-gray);
+		border: 1px solid var(--light-gray);
+		border-radius: var(--border-radius);
+		padding: 2rem;
+	}
+
+	.step {
+		display: none;
+	}
+
+	.step.active {
+		display: block;
+	}
+
+	.step h3 {
+		margin-bottom: 1.25rem;
+		font-size: 1.3rem;
+	}
+
+	.options {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.options-time {
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+
+	.option {
+		text-align: left;
+		padding: 0.9rem 1.25rem;
+		border: 1px solid var(--light-gray);
+		border-radius: var(--border-radius);
+		color: var(--white);
+		transition: all 0.2s ease;
+	}
+
+	.options-time .option {
+		flex: 1 1 120px;
+		text-align: center;
+	}
+
+	.option:hover {
+		border-color: var(--gold);
+	}
+
+	.option.selected {
+		border-color: var(--gold);
+		background-color: rgba(200, 164, 93, 0.1);
+	}
+
+	.option-meta {
+		display: block;
+		font-size: 0.8rem;
+		color: var(--light-gray);
+		margin-top: 0.25rem;
+	}
+
+	.date-input,
+	.form input {
+		width: 100%;
+		padding: 0.9rem 1.25rem;
+		background-color: var(--black);
+		border: 1px solid var(--light-gray);
+		border-radius: var(--border-radius);
+		color: var(--white);
+		font-family: var(--font-body);
+		margin-bottom: 1rem;
+	}
+
+	.summary p {
+		padding: 0.5rem 0;
+		border-bottom: 1px solid var(--light-gray);
+		color: var(--light-gray);
+	}
+
+	.summary strong {
+		color: var(--white);
+	}
+
+	.confirmation {
+		text-align: center;
+		padding: 1.5rem 0;
+	}
+
+	.confirmation.hidden {
+		display: none;
+	}
+
+	.confirmation-title {
+		font-family: var(--font-heading);
+		font-size: 1.6rem;
+		color: var(--gold);
+		margin-bottom: 0.5rem;
+	}
+
+	.confirmation-note {
+		font-size: 0.8rem;
+		color: var(--light-gray);
+		margin-top: 0.75rem;
+	}
+
+	.nav-buttons {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 2rem;
+	}
+
+	.nav-btn {
+		padding: 0.8rem 1.75rem;
+		border-radius: var(--border-radius);
+		text-transform: uppercase;
+		font-size: 0.85rem;
+		letter-spacing: 0.03em;
+	}
+
+	.nav-btn:not(.primary) {
+		color: var(--light-gray);
+	}
+
+	.nav-btn.primary {
+		background-color: var(--gold);
+		color: var(--black);
+	}
+
+	.nav-btn:disabled {
+		opacity: 0.4;
+		pointer-events: none;
+	}
+
+	.nav-btn.hidden {
+		visibility: hidden;
+	}
+</style>
+
+<script>
+	const state: Record<string, string> = { service: '', serviceLabel: '', barber: '', barberLabel: '', date: '', time: '', name: '', phone: '', email: '' };
+	let currentStep = 1;
+	const totalSteps = 6;
+
+	const steps = document.querySelectorAll('.step');
+	const progressSteps = document.querySelectorAll('.progress-step');
+	const btnNext = document.getElementById('btn-next') as HTMLButtonElement;
+	const btnBack = document.getElementById('btn-back') as HTMLButtonElement;
+	const dateInput = document.getElementById('date-input') as HTMLInputElement;
+	const nameInput = document.getElementById('input-name') as HTMLInputElement;
+	const phoneInput = document.getElementById('input-phone') as HTMLInputElement;
+	const emailInput = document.getElementById('input-email') as HTMLInputElement;
+	const summary = document.getElementById('summary');
+	const confirmation = document.getElementById('confirmation');
+	const confirmationNumber = document.getElementById('confirmation-number');
+
+	function showStep(step: number) {
+		steps.forEach((el) => el.classList.toggle('active', el.getAttribute('data-step') === String(step)));
+		progressSteps.forEach((el) => el.classList.toggle('current', el.getAttribute('data-step-indicator') === String(step)));
+		btnBack.classList.toggle('hidden', step === 1);
+		btnNext.textContent = step === totalSteps ? 'Confirmar Cita' : 'Siguiente';
+		updateNextButton();
+		if (step === totalSteps) renderSummary();
+	}
+
+	function isStepValid(step: number) {
+		if (step === 1) return !!state.service;
+		if (step === 2) return !!state.barber;
+		if (step === 3) return !!state.date;
+		if (step === 4) return !!state.time;
+		if (step === 5) return !!state.name && !!state.phone;
+		return true;
+	}
+
+	function updateNextButton() {
+		btnNext.disabled = !isStepValid(currentStep);
+	}
+
+	document.querySelectorAll('.option').forEach((btn) => {
+		btn.addEventListener('click', () => {
+			const type = btn.getAttribute('data-type');
+			const value = btn.getAttribute('data-value') ?? '';
+			const label = btn.getAttribute('data-label') ?? '';
+
+			document.querySelectorAll(`.option[data-type="${type}"]`).forEach((b) => b.classList.remove('selected'));
+			btn.classList.add('selected');
+
+			if (type === 'service') { state.service = value; state.serviceLabel = label; }
+			if (type === 'barber') { state.barber = value; state.barberLabel = label; }
+			if (type === 'time') { state.time = value; }
+
+			updateNextButton();
+		});
+	});
+
+	dateInput?.addEventListener('change', () => { state.date = dateInput.value; updateNextButton(); });
+	nameInput?.addEventListener('input', () => { state.name = nameInput.value; updateNextButton(); });
+	phoneInput?.addEventListener('input', () => { state.phone = phoneInput.value; updateNextButton(); });
+	emailInput?.addEventListener('input', () => { state.email = emailInput.value; });
+
+	function renderSummary() {
+		if (!summary) return;
+		summary.innerHTML = `
+			<p><strong>Servicio:</strong> ${state.serviceLabel}</p>
+			<p><strong>Barbero:</strong> ${state.barberLabel}</p>
+			<p><strong>Fecha:</strong> ${state.date}</p>
+			<p><strong>Horario:</strong> ${state.time}</p>
+			<p><strong>Nombre:</strong> ${state.name}</p>
+			<p><strong>Teléfono:</strong> ${state.phone}</p>
+		`;
+	}
+
+	btnNext.addEventListener('click', () => {
+		if (!isStepValid(currentStep)) return;
+
+		if (currentStep === totalSteps) {
+			const number = 'RES-' + Math.floor(100000 + Math.random() * 900000);
+			if (confirmationNumber) confirmationNumber.textContent = number;
+			confirmation?.classList.remove('hidden');
+			summary?.classList.add('hidden');
+			btnNext.classList.add('hidden');
+			btnBack.classList.add('hidden');
+			return;
+		}
+
+		currentStep++;
+		showStep(currentStep);
+	});
+
+	btnBack.addEventListener('click', () => {
+		if (currentStep === 1) return;
+		currentStep--;
+		showStep(currentStep);
+	});
+
+	// Preseleccionar barbero si viene desde "Agendar con él"
+	const preselected = sessionStorage.getItem('preselectedBarber');
+	if (preselected) {
+		const target = document.querySelector(`.option[data-type="barber"][data-value="${preselected}"]`);
+		if (target) {
+			target.classList.add('selected');
+			state.barber = preselected;
+			state.barberLabel = target.getAttribute('data-label') ?? '';
+		}
+		sessionStorage.removeItem('preselectedBarber');
+	}
+
+	showStep(currentStep);
+</script>

@@ -1,0 +1,6 @@
+[
+	{ "id": "t1", "name": "Roberto M.", "rating": 5, "comment": "Excelente atención y un corte impecable. Sin duda mi barbería de confianza." },
+	{ "id": "t2", "name": "Luis A.", "rating": 5, "comment": "El ambiente es increíble y los barberos son verdaderos profesionales." },
+	{ "id": "t3", "name": "Fernando G.", "rating": 4, "comment": "Muy buena experiencia, el sistema de citas me ahorró mucho tiempo." },
+	{ "id": "t4", "name": "Diego R.", "rating": 5, "comment": "Atención de primera y resultados consistentes cada vez que voy." }
+]

@@ -1,0 +1,45 @@
+---
+import Container from '../../../core/ui/Container.astro';
+import SectionHeading from '../../../core/ui/SectionHeading.astro';
+import TestimonialCard from '../cards/TestimonialCard.astro';
+import { testimonials } from '../../../core/config';
+---
+
+<section class="testimonials" id="testimonials">
+	<Container>
+		<SectionHeading title="Lo que Dicen Nuestros Clientes" />
+
+		<div class="grid">
+			{testimonials.map((t) => (
+				<TestimonialCard name={t.name} rating={t.rating} comment={t.comment} />
+			))}
+		</div>
+
+		<p class="note">Próximamente, testimonios reales de nuestros clientes.</p>
+	</Container>
+</section>
+
+<style>
+	.testimonials {
+		padding-block: var(--section-spacing);
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	@media (min-width: 768px) {
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	.note {
+		text-align: center;
+		margin-top: 2rem;
+		font-size: 0.8rem;
+		color: var(--light-gray);
+	}
+</style>

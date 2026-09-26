@@ -1,0 +1,29 @@
+---
+import Container from '../../../core/ui/Container.astro';
+import Button from '../../../core/ui/Button.astro';
+---
+
+<section class="cta">
+	<Container>
+		<h2>Tu próximo corte comienza aquí.</h2>
+		<p>Reserva tu cita y déjanos encargarnos del resto.</p>
+		<Button variant="primary" href="#booking">Agendar Cita</Button>
+	</Container>
+</section>
+
+<style>
+	.cta {
+		padding-block: var(--section-spacing);
+		text-align: center;
+	}
+
+	h2 {
+		font-size: clamp(2rem, 4vw, 3rem);
+		margin-bottom: 0.75rem;
+	}
+
+	.cta p {
+		color: var(--light-gray);
+		margin-bottom: 2rem;
+	}
+</style>

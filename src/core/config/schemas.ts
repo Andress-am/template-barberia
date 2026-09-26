@@ -64,3 +64,34 @@ export const galleryItemSchema = z.object({
 });
 
 export const gallerySchema = z.array(galleryItemSchema);
+
+export const barberSchema = z.object({
+	id: z.string(),
+	name: z.string(),
+	specialty: z.string(),
+	experience: z.string(),
+	instagram: z.string(),
+});
+
+export const barbersSchema = z.array(barberSchema);
+
+export const testimonialSchema = z.object({
+	id: z.string(),
+	name: z.string(),
+	rating: z.number(),
+	comment: z.string(),
+});
+export const testimonialsSchema = z.array(testimonialSchema);
+
+export const faqItemSchema = z.object({
+	id: z.string(),
+	question: z.string(),
+	answer: z.string(),
+});
+export const faqSchema = z.array(faqItemSchema);
+
+export const promotionContentSchema = z.object({
+	title: z.string(),
+	description: z.string(),
+	price: z.string(),
+});

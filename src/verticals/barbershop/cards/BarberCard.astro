@@ -1,0 +1,101 @@
+---
+interface Props {
+	id: string;
+	name: string;
+	specialty: string;
+	experience: string;
+	instagram: string;
+}
+
+const { id, name, specialty, experience, instagram } = Astro.props;
+---
+
+<article class="card hover-lift">
+	<div class="photo-placeholder">
+		<span>Foto</span>
+	</div>
+
+	<div class="card-body">
+		<h3>{name}</h3>
+		<p class="specialty">{specialty}</p>
+		<p class="experience">{experience}</p>
+
+		<div class="footer">
+			<a href={instagram} target="_blank" rel="noopener noreferrer" class="instagram">
+				Instagram
+			</a>
+			<a href="#booking" class="book-link" data-barber-id={id}>Agendar con él →</a>
+		</div>
+	</div>
+</article>
+
+<style>
+	.card {
+		background-color: var(--dark-gray);
+		border: 1px solid var(--light-gray);
+		border-radius: var(--border-radius);
+		overflow: hidden;
+	}
+
+	.photo-placeholder {
+		aspect-ratio: 1 / 1;
+		background-color: var(--light-gray);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--white);
+		opacity: 0.4;
+		font-family: var(--font-heading);
+	}
+
+	.card-body {
+		padding: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+	}
+
+	h3 {
+		font-size: 1.3rem;
+	}
+
+	.specialty {
+		color: var(--light-gray);
+		font-size: 0.9rem;
+		line-height: 1.4;
+	}
+
+	.experience {
+		color: var(--gold);
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		letter-spacing: 0.03em;
+	}
+
+	.footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 1rem;
+		padding-top: 1rem;
+		border-top: 1px solid var(--light-gray);
+	}
+
+	.instagram {
+		font-size: 0.8rem;
+		color: var(--white);
+	}
+
+	.instagram:hover {
+		color: var(--gold);
+	}
+
+	.book-link {
+		font-size: 0.8rem;
+		color: var(--gold);
+	}
+
+	.book-link:hover {
+		color: var(--white);
+	}
+</style>

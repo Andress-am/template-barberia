@@ -1,0 +1,57 @@
+---
+import Container from '../../../core/ui/Container.astro';
+import SectionHeading from '../../../core/ui/SectionHeading.astro';
+import BarberCard from '../cards/BarberCard.astro';
+import { barbers } from '../../../core/config';
+---
+
+<section class="team" id="team">
+	<Container>
+		<SectionHeading title="Conoce a Nuestros Barberos" />
+
+		<div class="grid">
+			{barbers.map((barber) => (
+				<BarberCard
+					id={barber.id}
+					name={barber.name}
+					specialty={barber.specialty}
+					experience={barber.experience}
+					instagram={barber.instagram}
+				/>
+			))}
+		</div>
+	</Container>
+</section>
+
+<style>
+	.team {
+		padding-block: var(--section-spacing);
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	@media (min-width: 640px) {
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+</style>
+
+<script>
+	document.querySelectorAll('.book-link').forEach((link) => {
+		link.addEventListener('click', () => {
+			const barberId = link.getAttribute('data-barber-id');
+			if (barberId) sessionStorage.setItem('preselectedBarber', barberId);
+		});
+	});
+</script>
